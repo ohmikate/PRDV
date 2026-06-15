@@ -1,0 +1,295 @@
+<!DOCTYPE html><html lang="fr"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAS RODAVE | Official Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Syne:wght@800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Bandeau d'urgence défilant */
+        .ticker {
+            background: #ffffff;
+            color: #000000;
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            padding: 10px 0;
+            letter-spacing: 3px;
+            overflow: hidden;
+            white-space: nowrap;
+            border-bottom: 2px solid #ff3b30;
+        }
+
+        .ticker-wrap {
+            display: inline-block;
+            animation: ticker 12s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* En-tête avec intégration du LOGO final */
+        nav {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 10px 5%;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #151515;
+        }
+
+        .nav-left {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style ajusté pour ton logo PRDV_LOGO.png */
+        .logo-img {
+            height: 70px; /* Légèrement agrandi pour bien voir les détails urbains */
+            width: auto;
+            filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.1)); /* Subtile lueur pour détacher le cercle du fond noir */
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .logo-img:hover {
+            transform: scale(1.08) rotate(3deg); /* Effet dynamique au survol */
+        }
+
+        .nav-right {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff3b30;
+        }
+
+        /* Section Hero */
+        .hero {
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            padding: 0 5% 80px 5%;
+            /* Remplacement par une image d'ambiance ou ta photo de vêtement à l'avenir */
+            background: linear-gradient(rgba(5,5,5,0.4) 20%, #050505 95%), url('hero-bg.jpg') no-repeat center center;
+            background-size: cover;
+            background-color: #0b0b0b;
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            text-transform: uppercase;
+            line-height: 0.9;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            margin-bottom: 35px;
+            max-width: 600px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn {
+            background: #ffffff;
+            color: #000000;
+            font-family: 'Anton', sans-serif;
+            padding: 18px 45px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 2px solid #ffffff;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        /* Grille Produits */
+        .products {
+            padding: 100px 5%;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+            letter-spacing: -1px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: #0f0f0f;
+            border: 1px solid #1a1a1a;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover {
+            border-color: #ffffff;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 425px;
+            background: #151515;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #444444;
+            font-family: 'Anton', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #000000;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            padding: 6px 14px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-info {
+            padding: 25px;
+            background: #0f0f0f;
+        }
+
+        .product-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .product-price {
+            font-family: 'Anton', sans-serif;
+            color: #ff3b30;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                grid-template-columns: 1fr auto;
+                padding: 15px 5%;
+            }
+            .nav-left { display: none; }
+        }
+    </style></head><body>
+
+    <div class="ticker">
+        <div class="ticker-wrap">
+            DROP 01 • PAS RODAVE • QUANTITÉS LIMITÉES • AUCUN RESTOCK • SÉCURISE TON PULL • COCHE LA CAGOULE • DROP 01 • PAS RODAVE • 
+        </div>
+    </div>
+
+    <!-- Barre de navigation avec ton logo final intégré -->
+    <nav>
+        <div class="nav-left">
+            <a href="#">Shop</a>
+            <a href="#">Drops</a>
+        </div>
+        <div class="nav-center">
+            <!-- Intégration exacte de ton fichier PRDV_LOGO.png -->
+            <img src="PRDV_LOGO.png" alt="PAS RODAVE" class="logo-img">
+        </div>
+        <div class="nav-right">
+            <a href="#">Cart (0)</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>PAS<br>RODAVE</h1>
+        <p>L'anonymat comme signature. Collection technique premium conçue pour l'asphalte.</p>
+        <a href="#shop" class="btn">Entrer dans le Drop</a>
+    </section>
+
+    <section class="products" id="shop">
+        <h2 class="section-title">[ ACTIVE_DROP_01 ]</h2>
+        <div class="grid">
+            
+            <div class="product-card">
+                <div class="badge" style="background: #ff3b30; border: none;">STOCK FAIBLE</div>
+                <div class="product-img">[ PULL CAPUCHE OVERSIZE HEAVY ]</div>
+                <div class="product-info">
+                    <div class="product-name">Hoodie "Immeubles" Heavyweight Noir</div>
+                    <div class="product-price">65.00 EUR</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="badge">ÉDITION LIMITÉE</div>
+                <div class="product-img">[ CAGOULE TECHNIQUE MAILLES ]</div>
+                <div class="product-info">
+                    <div class="product-name">Cagoule "Discrétion" Broderie Blanche</div>
+                    <div class="product-price">30.00 EUR</div>
+                </div>
+            </div>
+
+        </div>
+    </section></body></html>
